@@ -1,0 +1,10 @@
+---
+- name: Ensures /etc/linode exists
+  file:
+    dest: /etc/linode
+    state: directory
+- name: Setup Longview API key
+  copy:
+    content: "{{ longview_api_key | mandatory }}"
+    dest: /etc/linode/longview.key
+
