@@ -1,10 +1,14 @@
 ---
 - name: Ensure that we have the Longview repo keys installed
-  apt_key: url='https://apt-longview.linode.com/linode.gpg' state=present
+  apt_key: 
+    url: https://apt-longview.linode.com/linode.gpg
+    state: present
 - name: Ensure that we have the Longview repo installed
-  apt_repository: repo='deb http://apt-longview.linode.com/ jessie main' state=present
+  apt_repository: 
+    repo: "deb http://apt-longview.linode.com/ {{ ansible_distribution_release }} main"
+    state: present
 - name: Ensure packages needed for Longview provisioning are present
-  apt: name={{ item }} state=latest
-  with_items:
-    - linode-longview
+  apt: 
+    name: linode-longview
+    state: latest
 

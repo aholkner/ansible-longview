@@ -7,4 +7,5 @@
   copy:
     content: "{{ longview_api_key | mandatory }}"
     dest: /etc/linode/longview.key
+  notify: Restart Longview
 
